@@ -116,7 +116,7 @@ a:visited {
   color: #f5f5f5;
 }
 .header .purchase-btn::after {
-  content: url(../../img/cart.png);
+  content: url(../img/cart.png);
   position: absolute;
   top: 50%;
   right: 15px;

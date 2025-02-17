@@ -25,7 +25,7 @@
   color: list.nth(config.$colors, 1);
   
   &::after {
-    content: url(../../img/cart.png);
+    content: url(../img/cart.png);
     position: absolute;
     top: 50%;
     right: 15px;
