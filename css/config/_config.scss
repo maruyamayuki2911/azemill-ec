@@ -1,0 +1,20 @@
+@use 'sass:list';
+
+
+// サイトのカラー
+$colors: (
+  #f5f5f5,
+  #fac559,
+);
+
+// 背景色
+$bg-color: (
+  #333333,
+  #504946
+);
+
+// リンクの設定
+a:link,
+a:visited {
+  color: list.nth($colors, 1);
+}

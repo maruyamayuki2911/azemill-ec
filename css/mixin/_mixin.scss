@@ -1,0 +1,58 @@
+@use '../config/config';
+@use 'sass:list';
+
+// フェードインアニメーション
+@mixin fade-in-anime(){
+  @keyframes fade-in {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
+  } 
+}
+
+// 購入ボタン
+@mixin purchase-btn-style() {
+  width: 180px;
+  padding: 0  20px 0 10px;
+  margin-left: 50px;
+  background-color: #696969;
+  border-radius: 30px;
+  text-align: center;
+  line-height: 40px;
+  color: list.nth(config.$colors, 1);
+  
+  &::after {
+    content: url(../../img/cart.png);
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    height: 24px;
+    transform: translate(0, -65%);
+  }
+
+  &:hover {
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out;
+  }
+}
+
+// 汎用ボタン
+@mixin btn-primary-style() {
+  padding: 5px 20px;
+  border-radius: 40px;
+  border: solid 1px #ffffff;
+  text-align: center;
+  font-weight: bold;
+  line-height: 40px;
+  letter-spacing: 0.5rem;
+  color: list.nth(config.$colors, 1);
+
+  &:hover {
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out;
+  }
+}
+
