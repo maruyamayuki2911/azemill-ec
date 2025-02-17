@@ -1,4 +1,4 @@
-import { config } from './config.js';
+// import { config } from './config.js';
 
 // localStorage.clear();
 document.addEventListener('DOMContentLoaded', () => {
@@ -346,10 +346,5 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('サーバーが混み合っています。しばらくしてから再度お試しください');
       }
     }
-
-
-    // カート内の商品をリセットする
-    // 購入完了ページに遷移される
-
   });
 });

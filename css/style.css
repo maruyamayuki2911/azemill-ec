@@ -280,7 +280,7 @@ a:visited {
 }
 
 .campaign {
-  background: url(../../img/bar.jpg) no-repeat center/cover;
+  background: url(../img/bar.jpg) no-repeat center/cover;
   width: 100%;
   color: #f5f5f5;
 }
@@ -391,7 +391,7 @@ a:visited {
   position: relative;
   width: 200px;
   height: 200px;
-  background: url(../../img/icon_summary.jpg) no-repeat;
+  background: url(../img/icon_summary.jpg) no-repeat;
   background-size: 1000px;
   background-position: -64px -313px;
   border-radius: 50%;
@@ -410,7 +410,7 @@ a:visited {
   position: relative;
   width: 200px;
   height: 200px;
-  background: url(../../img/icon_summary.jpg) no-repeat;
+  background: url(../img/icon_summary.jpg) no-repeat;
   background-size: 1000px;
   background-position: -572px -122px;
   border-radius: 50%;
@@ -429,7 +429,7 @@ a:visited {
   position: relative;
   width: 200px;
   height: 200px;
-  background: url(../../img/icon_summary.jpg) no-repeat;
+  background: url(../img/icon_summary.jpg) no-repeat;
   background-size: 1000px;
   background-position: -406px -311px;
   border-radius: 50%;
@@ -448,7 +448,7 @@ a:visited {
   position: relative;
   width: 200px;
   height: 200px;
-  background: url(../../img/icon_summary.jpg) no-repeat;
+  background: url(../img/icon_summary.jpg) no-repeat;
   background-size: 1000px;
   background-position: -575px -518px;
   border-radius: 50%;
@@ -499,7 +499,7 @@ a:visited {
 }
 
 .main-products__background {
-  background: url(../../../img/products/alcohol-3545200_1920.jpg) no-repeat center/cover fixed;
+  background: url(../img/products/alcohol-3545200_1920.jpg) no-repeat center/cover fixed;
   color: #f5f5f5;
   text-shadow: 0 5px 5px black;
 }
