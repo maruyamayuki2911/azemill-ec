@@ -45,11 +45,6 @@ select {
   font: inherit;
 }
 
-a:link,
-a:visited {
-  color: #f5f5f5;
-}
-
 .header {
   display: flex;
   justify-content: center;
@@ -82,9 +77,8 @@ a:visited {
 .header-nav ul li a {
   position: relative;
 }
-.header-nav ul li a span {
-  display: block;
-  font-size: 0.8rem;
+.header-nav ul li a:link, .header-nav ul li a:visited {
+  color: #f5f5f5;
 }
 .header-nav ul li a::after {
   content: "";
@@ -99,6 +93,10 @@ a:visited {
 }
 .header-nav ul li a:hover::after {
   transform: scaleX(1);
+}
+.header-nav ul li a span {
+  display: block;
+  font-size: 0.8rem;
 }
 
 .header .purchase-btn {
@@ -335,7 +333,8 @@ a:visited {
   margin: 0 auto;
   text-align: center;
 }
-.campaign-box .campaign-item h3, .campaign-box .campaign-item p {
+.campaign-box .campaign-item h3,
+.campaign-box .campaign-item p {
   letter-spacing: 0.2rem;
   text-align: left;
   text-shadow: 1px 2px 10px #000000;
@@ -355,6 +354,9 @@ a:visited {
 .campaign-box .campaign-item a:hover {
   opacity: 0.5;
   transition: opacity 0.2s ease-in-out;
+}
+.campaign-box .campaign-item a:link, .campaign-box .campaign-item a:visited {
+  color: #f5f5f5;
 }
 
 .mail-magazine-head {
@@ -879,6 +881,113 @@ a:visited {
   transform: rotate(45deg);
 }
 
+.order-completion {
+  display: flex;
+  justify-content: center;
+  background: url(../img/whisky-factory.jpg) no-repeat center/cover;
+}
+
+.order-completion-container {
+  width: 80%;
+  max-width: 1300px;
+  margin-top: 80px;
+  padding: 30px;
+}
+.order-completion-container > h1 {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Cookie", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+  font-size: 7rem;
+  text-shadow: 0 0 10px #f5f5f5;
+}
+
+.order-completion-message {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px 60px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #808080;
+}
+.order-completion-message h1,
+.order-completion-message p {
+  text-align: center;
+}
+
+.order-details {
+  width: 60%;
+  margin: 5px auto;
+  padding: 20px 60px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #808080;
+}
+.order-details h3 {
+  padding: 5px 5px;
+}
+.order-details .order-info {
+  padding: 5px 5px;
+}
+.order-details .order-list {
+  border-radius: 4px;
+  box-shadow: 0 0 5px #808080;
+}
+.order-details .order-list h3 {
+  padding: 5px 5px;
+  border-radius: 4px 4px 0 0;
+  background-color: #f7f4e5;
+}
+.order-details .order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 5px;
+}
+.order-details .order-item .order-quantity {
+  padding: 0 20px;
+}
+.order-details small .cancel-return {
+  display: block;
+  width: 60%;
+  padding: 5px;
+}
+.order-details small .cancel-return:link, .order-details small .cancel-return:visited {
+  color: black;
+}
+
+.payment-info {
+  width: 60%;
+  margin: 5px auto;
+  padding: 20px 60px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #808080;
+}
+.payment-info h3 {
+  padding: 5px 5px;
+}
+.payment-info p {
+  padding: 0 5px;
+}
+
+.shipping-info {
+  width: 60%;
+  margin: 5px auto;
+  padding: 20px 60px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #808080;
+}
+.shipping-info h3 {
+  padding: 5px 5px;
+}
+.shipping-info p {
+  padding: 0 5px;
+}
+
 .footer {
   display: flex;
   align-items: center;
@@ -905,6 +1014,9 @@ a:visited {
 .footer__info ul a:hover {
   opacity: 0.5;
   transition: opacity 0.2s ease-in-out;
+}
+.footer__info ul a:link, .footer__info ul a:visited {
+  color: #f5f5f5;
 }
 
 .footer__sns {
@@ -939,4 +1051,71 @@ a:visited {
   border-top: 3px solid #ffffff;
   border-right: 3px solid #ffffff;
   transform: translateY(20%) rotate(-45deg);
+}
+
+.contact-container {
+  width: 50%;
+  max-width: 800px;
+  margin: 80px auto 0 auto;
+  padding: 10px;
+}
+.contact-container .form-header {
+  padding: 50px 0;
+}
+.contact-container .form-header .form-header--en {
+  font-size: 2rem;
+}
+.contact-container .contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.contact-container .contact-form .form-label {
+  display: block;
+  font-weight: bold;
+  padding: 5px 0;
+}
+.contact-container .contact-form input[type=text],
+.contact-container .contact-form input[type=email] {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border-color: rgba(6, 6, 6, 0.2);
+  border-radius: 3px;
+}
+.contact-container .contact-form .order-number-label,
+.contact-container .contact-form input.input-order-number {
+  height: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  transition: height 0.5s ease;
+}
+.contact-container .contact-form .order-number-label.active {
+  height: 34px;
+  padding: 5px 0;
+}
+.contact-container .contact-form input.input-order-number.active {
+  height: 38px;
+  padding: 5px 0;
+  border: solid 2px;
+  border-color: rgba(6, 6, 6, 0.2);
+}
+.contact-container .contact-form textarea {
+  width: 100%;
+  height: 200px;
+}
+.contact-container .contact-form span a:link,
+.contact-container .contact-form :visited {
+  padding: 5px;
+  color: #f98322;
+}
+.contact-container .contact-form .submit-btn {
+  display: block;
+  width: 100px;
+  height: 40px;
+  margin: 5px auto;
+  padding: 5px;
+  background-color: #333333;
+  color: #f5f5f5;
+  border-radius: 3px;
 }

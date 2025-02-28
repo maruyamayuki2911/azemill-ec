@@ -1,6 +1,6 @@
-// import { config } from './config.js';
+import { config } from './config.js';
 
-// localStorage.clear();
+localStorage.clear();
 document.addEventListener('DOMContentLoaded', () => {
   const cartBtn = document.getElementById('cart-btn');
   const plusBtns = document.querySelectorAll('.product__plus-btn');
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // カート内の商品をlocalStorageに保存する処理
   const saveCart = () => {
     localStorage.setItem('cart', JSON.stringify(cart));
-    // console.log(cart);
 
     // カート内の数量を表示
     updateCartCount();
@@ -124,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         existingProduct.quantity += quantity;
       } else {
         cart.push(product);
-        console.log(product);
       }
 
       // localStorageに保存
@@ -155,11 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const indicator = cartElement.querySelector('.product__indicator');
       let count = parseInt(indicator.textContent, 10);
       const productName = cartElement.querySelector('.product-name').textContent.trim();
-      console.log(`クリックした商品名：${productName}`)
       const priceElement = cartElement.querySelector('.product-price');
       const existingProduct = cart.find((item) => item.name.trim() === productName);  //localStorage内の商品を取得
-      console.log(existingProduct);
-      console.log(cart);
 
       // プラスボタンの処理
       if (target.classList.contains('product__plus-btn')) {
@@ -336,15 +331,18 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error(`HTTPエラー: ${response.status}`);
       }
 
-  
+
         const result = await response.json();
         console.log('購入完了;', result);
   
         localStorage.removeItem('cart');
       } catch (error) {
         console.error('エラー：', error.message);
-        alert('サーバーが混み合っています。しばらくしてから再度お試しください');
+        alert('しばらくしてから再度お試しください');
       }
     }
+
+    // 購入完了画面へ遷移
+    window.location.assign('../order-conpletion/index.html');
   });
 });

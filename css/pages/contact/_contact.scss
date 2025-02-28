@@ -1,0 +1,84 @@
+@use '../../config/reset';
+@use '../../config/config';
+@use '../../mixin/mixin';
+@use 'sass:list';
+@use '../../module/header';
+
+.contact-container {
+  width: 50%;
+  max-width: 800px;
+  margin: 80px auto 0 auto;
+  padding: 10px;
+
+  .form-header {
+    padding: 50px 0;
+
+    .form-header--en {
+      font-size: 2rem;
+    }
+  }
+
+  .contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+
+    .form-label {
+      display: block;
+      font-weight: bold;
+      padding: 5px 0;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      display: block;
+      width: 100%;
+      height: 40px;
+      border-color: rgba(6, 6, 6, 0.2);
+      border-radius: 3px;
+    }
+
+    .order-number-label,
+    input.input-order-number {
+      height: 0;
+      padding: 0;
+      border: none;
+      overflow: hidden;
+      transition: height 0.5s ease;
+    }
+
+    .order-number-label.active{
+      height: 34px;
+      padding: 5px 0;
+    }
+
+    input.input-order-number.active {
+      height: 38px;
+      padding: 5px 0;
+      border: solid 2px;
+      border-color: rgba(6, 6, 6, 0.2);
+    }
+
+
+    textarea {
+      width: 100%;
+      height: 200px;
+    }
+
+    span a:link,
+    :visited {
+      padding: 5px;
+      color: #f98322;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100px;
+      height: 40px;
+      margin: 5px auto;
+      padding: 5px;
+      background-color: list.nth(config.$bg-color, 1);
+      color: list.nth(config.$colors, 1);
+      border-radius: 3px;
+    }
+  }
+}

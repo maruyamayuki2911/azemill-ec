@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="js">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azumill | 購入完了</title>
+  <link rel="icon" href="../img/azumill_icon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header id="header">
+    <div class="header">
+      <img src="../img/azumill_icon.png" alt="アズミルのアイコン" class="header-icon">
+      <nav class="header-nav">
+        <ul>
+          <li><a href="../index.html">ホーム<span>HOME</span></a></li>
+          <li><a href="../products/index.html">商品一覧<span>PRODUCT</span></a></li>
+          <li><a href="#">ブランド紹介<span>BLAND</span></a></li>
+          <li><a href="../contact/index.html">お問い合わせ<span>CONTACT</span></a></li>
+        </ul>
+      </nav>
+      <a href="../products/index.html" class="purchase-btn">購入はこちら</a>
+    </div>
+  </header>
+  <main>
+    <section id="order-completion">
+      <div class="order-completion">
+        <div class="order-completion-container">
+          <h1>Azumill Whisky</h1>
+          <div class="order-completion-message">
+            <h1>ご購入ありがとうございます。</h1>
+            <p>商品発送後にお知らせメールをお送りします。</p>
+          </div>
+          <div class="order-details">
+            <h3>ご注文内容</h3>
+            <div class="order-info">
+              <p><strong>注文番号：</strong><span id="order-number">XXXXX</span></p>
+              <p><strong>注文日時：</strong><span id="order-date">XXXX年X月XX日 XX:XX</span></p>
+            </div>
+            <div class="order-list">
+              <h3>購入商品</h3>
+              <div id="order-items">
+                <!-- ここに商品を表示 -->
+              </div>
+            </div>
+            <small><a href="" class="cancel-return">キャンセル・返品について</a></small>
+          </div>
+          <div class="payment-info">
+            <h3>お支払情報</h3>
+            <p><strong>合計金額：</strong><span id="total-amount"></span></p>
+            <p><strong>支払方法：</strong><span id="payment-method">代引き</span></p>
+          </div>
+          <div class="shipping-info">
+            <h3>配送情報</h3>
+            <p><strong>氏名：</strong><span id="shipping-name">XXXXX</span></p>
+            <p><strong>住所：</strong><span id="shipping-address">東京都XXXXXX</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+<script type="module" src="../js/order-completion.js"></script>
+
+</html>
