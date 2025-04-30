@@ -23,7 +23,7 @@
   padding: 30px;
 }
 
-.title--en {
+.main-products>.title--en {
   padding: 30px 30px;
   font-size: 3rem;
   letter-spacing: 0.5rem;
@@ -129,6 +129,12 @@
 
 .gift-products {
   padding: 30px;
+
+  .title--en {
+    padding: 30px 30px;
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+  } 
 }
 
 .gift-product__container {
@@ -315,7 +321,7 @@
       opacity: 0.5;
     }
 
-    &.purchase-btn--disabled{
+    &.purchase-btn--disabled {
       pointer-events: none;
       opacity: 0.5;
     }

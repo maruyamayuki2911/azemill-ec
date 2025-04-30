@@ -8,7 +8,6 @@
   <title>Azemill</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
   <header id="header">
     <div class="header">
@@ -17,7 +16,7 @@
         <ul>
           <li><a href="./index.html">ホーム<span>HOME</span></a></li>
           <li><a href="./products/index.html">商品一覧<span>PRODUCT</span></a></li>
-          <li><a href="#">ブランド紹介<span>BLAND</span></a></li>
+          <li><a href="./under-developement/index.html">ブランド紹介<span>BLAND</span></a></li>
           <li><a href="./contact/index.html">お問い合わせ<span>CONTACT</span></a></li>
         </ul>
       </nav>
@@ -41,7 +40,7 @@
           <p>
             私たちのウイスキーは、職人の技と自然の恵が融合した逸品です。<br>芳醇な香りと繊細な味わいで、あなたの日常を特別なものにします。
           </p>
-          <a href="" class="detail-btn hero-btn">詳細</a>
+          <a href="./under-developement/index.html" class="detail-btn hero-btn">詳細</a>
           <a href="./products/index.html" class="purchase-btn hero-btn">購入</a>
         </div>
       </div>
@@ -56,7 +55,7 @@
             </p>
             <div class="content-box">
               <div class="bland-items">
-                <a href="">
+                <a href="./under-developement/index.html">
                   <h3 class="arrow">Highland Flame</h3>
                 </a>
                 <span>シングルモルト</span>
@@ -64,7 +63,7 @@
                 <img src="./img/whiskey_glass.jpg" alt="">
               </div>
               <div class="bland-items">
-                <a href="">
+                <a href="./under-developement/index.html">
                   <h3 class="arrow">Amber Crown</h3>
                 </a>
                 <span>ブレンデッド</span>
@@ -107,7 +106,7 @@
                 <img src="./img/campaign_drinking suggestions.png" alt="">
                 <h3>ウイスキーの飲み方提案</h3>
                 <p>新しい飲み方を試して、楽しみを広げましょう。</p>
-                <a href="">詳しくみる</a>
+                <a href="./under-developement/index.html">詳しくみる</a>
               </div>
             </div>
             <div class="campaign-box">
@@ -115,7 +114,7 @@
                 <img src="./img/campaign_party.png" alt="">
                 <h3>特別イベントのご案内</h3>
                 <p>ウイスキー愛好者のためのイベントに参加しませんか？</p>
-                <a href="">詳しくみる</a>
+                <a href="./under-developement/index.html">詳しくみる</a>
               </div>
             </div>
           </div>
@@ -144,37 +143,37 @@
             <p>飲み方やペアリングの<br>コラムを配信</p>
           </div>
         </div>
-        <form class="mail-magazine-form">
+        <form class="mail-magazine-form" id="mail-magazine-form" >
           <label for="email" class="mail-magazine__label">メールアドレス</label>
           <input type="email" id="email" class="mail-magazine__input" name="email" placeholder="info@azumill.com">
-          <button type="submit" class="mail-magazine__submit">登録</button>
+          <button type="submit" class="mail-magazine__submit inactive">登録</button>
         </form>
       </div>
     </section>
-    <footer>
-      <div class="footer">
-        <div class="footer__info">
-          <small class="footer__copyright">&copy;2025 Azumill All rights reserved </small>
-          <ul>
-            <li><a href="">プライバシーポリシー</a></li>
-            <li><a href="">利用規約</a></li>
-            <li><a href="">クッキー設定</a></li>
-          </ul>
-        </div>
-        <div class="footer__sns">
-          <a href="https://www.instagram.com/?locale=ja_JP">
-            <img src="./img/sns_logo_instagram.png" alt="インスタグラムのリンク">
-          </a>
-          <a href="https://x.com/?lang=ja">
-            <img src="./img/sns_logo_x.png" alt="エックスのリンク">
-          </a>
-        </div>
-        <a class="footer__top-btn" href="#header">
-          <span></span>
+  </main>
+  <footer>
+    <div class="footer">
+      <div class="footer__info">
+        <small class="footer__copyright">&copy;2025 Azumill All rights reserved </small>
+        <ul>
+          <li><a href="./under-developement/index.html">プライバシーポリシー</a></li>
+          <li><a href="./under-developement/index.html">利用規約</a></li>
+          <li><a href="./under-developement/index.html">クッキー設定</a></li>
+        </ul>
+      </div>
+      <div class="footer__sns">
+        <a href="https://www.instagram.com/?locale=ja_JP">
+          <img src="./img/sns_logo_instagram.png" alt="インスタグラムのリンク">
+        </a>
+        <a href="https://x.com/?lang=ja">
+          <img src="./img/sns_logo_x.png" alt="エックスのリンク">
         </a>
       </div>
-    </footer>
-  </main>
+      <a class="footer__top-btn" href="#header">
+        <span></span>
+      </a>
+    </div>
+  </footer>
 </body>
-
+<script type="module" src="./js/newsletter.js"></script>
 </html>

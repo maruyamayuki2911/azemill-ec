@@ -1,0 +1,32 @@
+@use '../../config/reset';
+@use '../../config/config';
+@use '../../mixin/mixin';
+@use 'sass:list';
+@use '../../module/header';
+@use '../../module/footer';
+
+.mail-magazine-completion-wrap {
+  width: 100%;
+  height: 100vh;
+  margin-top: 80px;
+
+  .completion-msg-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    height: 80%;
+    max-width: 800px;
+    margin: 80px auto 0 auto;
+    padding: 10px;
+    
+
+    .title--en{
+      font-size: 2rem;
+    }
+
+    .title--ja{
+      padding-bottom: 10px;
+    }
+  }
+}

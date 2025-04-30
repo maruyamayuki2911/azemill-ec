@@ -373,13 +373,18 @@
     font-weight: bold;
   }
 
-  input {
+  .mail-magazine__input {
     height: 35px;
     margin: 5px 0;
     border-radius: 5px;
     border: solid 1px #b8b6b6;
   }
 
+    .error-message {
+      color: red;
+      text-align: left;
+    }
+  
   button {
     width: 30%;
     margin: 10px auto;
@@ -387,10 +392,15 @@
     border: none;
     background-color: #000000;
     color: list.nth(config.$colors, 1);
-
-    &:hover {
+    
+    &.inactive{
       opacity: 0.5;
-      transition: opacity 0.2s ease-in-out;
+      pointer-events: none;
+    }
+
+    &.is-active {
+      opacity: 1.0;
+      pointer-events: auto;
     }
   }
 }

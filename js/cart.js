@@ -206,9 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
           // localStorageの数量を変更・保存
           saveCart();
 
-
+          
           // カート内の数量を表示
           updateCartCount();
+
+          // 数量「0」の場合、購入ボタンを無効化
+          if(cart.every(cart => cart.quantity <= 0)){
+            purchaseBtn.classList.add('purchase-btn--disabled');
+          }
         }
       }
     }
@@ -343,6 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 購入完了画面へ遷移
-    window.location.assign('../order-conpletion/index.html');
+    window.location.assign('../order-completion/index.html');
   });
 });
