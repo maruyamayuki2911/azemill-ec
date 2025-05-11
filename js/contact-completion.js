@@ -1,4 +1,4 @@
-// import { config } from './config.js';
+import { config } from './config.js';
 
 document.addEventListener('DOMContentLoaded',()=>{
   // モックAPIからデータを取得する処理
@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded',()=>{
       return await response.json();
     }catch(error){
       console.error(error);
-      alert('お問い合わせ情報の取得に失敗しました。');
       return false;
     }
   }
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded',()=>{
       alert('お問い合わせ内容の取得に失敗しました。下記電話番号までお問い合わせください。0120-000001');
       return
     }
-    console.log(await inquiryData);
 
     const nameElement = document.getElementById('name');
     const contactTypeElement = document.getElementById('contact-type');

@@ -1,5 +1,5 @@
-// import { config } from './config.js';
-import { sanitize, emailValidation, sendFormData} from './utility.js';
+import { config } from './config.js';
+import { sanitize, emailValidation, sendFormData } from './utility.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //メールアドレスのバリデーション
     const result = emailValidation(data);
-    if(result !== undefined){
+    if (result !== undefined) {
       errorMessages.push(result);
     }
 
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // フォームをサーバーに送信する処理
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // 入力値を取得
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
       agreement: getAgreementValue('agreement'),
     }
 
-    if(!formData.orderNumber){
+    if (!formData.orderNumber) {
       formData.orderNumber = null;
     }
 
@@ -150,14 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
       displayErrorMessages(errorMessages);
 
       // フォームデータを送信
-      sendFormData(formData);
-
+      await sendFormData(formData);
       // フォームをリセット
       document.querySelector('form').reset();
 
       // 送信完了画面に遷移
       document.location.assign('../contact/contact-completion.html');
-      
+
+
     } else if (errorMessages.length > 0) {
       // エラーメッセージを表示
       displayErrorMessages(errorMessages);

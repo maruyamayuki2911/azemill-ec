@@ -61,11 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // モックAPIに送信する処理
-  emailForm.addEventListener('submit', (e) => {
+  emailForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    sendFormData(inputData);
-    
+    await sendFormData(inputData);
+
     document.location.assign('../mail-magazine-completion/mail-magazine-completion.html');
+
   });
 });

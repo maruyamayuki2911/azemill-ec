@@ -1,4 +1,4 @@
-// import { config } from './config.js';
+import { config } from './config.js';
 
 // XXS対策
 export const sanitize = (str) => {
