@@ -37,3 +37,14 @@ export const sendFormData = async (data) => {
     alert('しばらくたってからもう一度お試しください。');
   }
 }
+
+// localStorageに保存している特定のデータを取得する処理
+export const getStorageData = (key) => {
+  const data = localStorage.getItem(key);
+  return data
+}
+
+// localStorageに保存している特定のデータを削除する処理
+export const removeStorageData = (key) => {
+  localStorage.removeItem(key);
+}

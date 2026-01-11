@@ -1,4 +1,8 @@
 import { config } from './config.js';
+import {
+  getStorageData,
+  removeStorageData
+} from './utility.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -11,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 注文日時を取得する処理
-  const getOrderDate = ()=>{
+  const getOrderDate = () => {
     // YYYY/MM/DD/HH/MM形式に変換
     const orderDate = new Date().toLocaleString('ja-JP', {
       year: 'numeric',
@@ -23,22 +27,32 @@ document.addEventListener('DOMContentLoaded', () => {
     return orderDate;
   }
 
-  // モックAPIから注文内容を取得
+  // モックAPIから注文データを取得
   const getOrderInfo = async () => {
     try {
       const response = await fetch(`${config.apiUrl}/orders`);
-      
+
       if (!response) {
         throw new Error(`HTTPエラー：${response.status}`);
       }
-      
+
       const orderData = await response.json();
       return orderData;
     } catch (error) {
-      console.error('エラー', error.message);
       return null;
     }
   }
+
+  // 注文IDのデータを取得する処理
+  const getOrderIdData = (orderData) => {
+    const orderId = getStorageData('latestOrderId');
+    const myOrder = orderData.find(orderData => orderData.orderId === orderId);
+
+    if (myOrder === undefined) return '注文データが取得に失敗しました。';
+
+    return myOrder;
+  }
+
 
   // 合計金額を計算する処理
   const totalAmount = (orderData) => {
@@ -61,24 +75,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalAmountElement = document.getElementById('total-amount');
 
   const displayOrderInfo = async () => {
-    try{
+    try {
       // 注文番号を表示
       const orderNumber = generateOrderNumber();
       orderNumberElement.textContent = orderNumber;
-  
+
       // 注文日時を表示
       const orderDate = getOrderDate();
       orderDateElement.textContent = orderDate;
-  
+
       //注文データを取得
       const orderData = await getOrderInfo();
-      if(!orderData){
+      if (!orderData) {
         throw new Error('注文データの取得に失敗');
       }
 
       // ご注文内容／合計金額を表示
       if (orderData && orderData.length > 0) {
-        
+
         orderData.forEach((item) => {
           const orderItem = document.createElement('div')
           orderItem.classList.add('order-item');
@@ -88,16 +102,15 @@ document.addEventListener('DOMContentLoaded', () => {
           `;
           orderItemsElement.appendChild(orderItem);
         });
-        
+
         const totalPrice = totalAmount(orderData);
         totalAmountElement.textContent = `${totalPrice.toLocaleString('ja-jp')}円`;
       }
 
-    }catch(error){
-      console.error('エラー：',error.message);
+    } catch (error) {
       alert('しばらくしてから再度お試しください');
     }
   }
 
-  displayOrderInfo();
+  // displayOrderInfo();
 });
