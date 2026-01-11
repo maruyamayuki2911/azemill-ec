@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // カートの情報を取得
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  console.log(cart);
+
   // カート内の合計商品数を表示する処理
   const updateCartCount = () => {
     const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0)
@@ -206,12 +206,12 @@ document.addEventListener('DOMContentLoaded', () => {
           // localStorageの数量を変更・保存
           saveCart();
 
-          
+
           // カート内の数量を表示
           updateCartCount();
 
           // 数量「0」の場合、購入ボタンを無効化
-          if(cart.every(cart => cart.quantity <= 0)){
+          if (cart.every(cart => cart.quantity <= 0)) {
             purchaseBtn.classList.add('purchase-btn--disabled');
           }
         }
@@ -306,45 +306,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 注文番号を採番する処理
+  const generateOrderId = () => {
+    const randomNumber = Math.floor(Math.random() * 10000);
+    const dateNumber = Date.now().toString().slice(-4);
+    const uniqueNumber = randomNumber + dateNumber;
+    return uniqueNumber;
+  }
 
   // 購入ボタンの処理
   purchaseBtn.addEventListener('click', async () => {
-    
-    // cartをオブジェクトに加工
-    // mockAPIの仕様上、配列を送信できないため、1件ずつ送信する。
-    for (const item of cart) {
-      const orderData = {
-        name: item.name,
-        volume: item.volume,
-        items: item.items,
-        price: item.price,
-        quantity: item.quantity
-      }
-      
-      
-      try {
-        const response = await fetch(`${config.apiUrl}/orders`, {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json'
-          },
-          body: JSON.stringify(orderData)
-        });
+  
+    // 注文番号採番
+    const orderId = generateOrderId();
 
-        // ステータスコードのチェック
+    // 画面遷移対策として注文番号を保存
+    localStorage.setItem('latestOrderId', orderId);
+
+    const orderData = [
+      {
+        orderId: orderId,
+        date: new Date().toISOString(),
+        items: cart
+      }
+    ];
+
+    try {
+      const response = await fetch(`${config.apiUrl}/orders`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(orderData)
+      });
+
+      // ステータスコードのチェック
       if (!response.ok) {
         throw new Error(`HTTPエラー: ${response.status}`);
       }
 
 
-        const result = await response.json();
-        console.log('購入完了;', result);
-  
-        localStorage.removeItem('cart');
-      } catch (error) {
-        console.error('エラー：', error.message);
-        alert('しばらくしてから再度お試しください');
-      }
+      const result = await response.json();
+
+      localStorage.removeItem('cart');
+    } catch (error) {
+      alert('しばらくしてから再度お試しください');
     }
 
     // 購入完了画面へ遷移
