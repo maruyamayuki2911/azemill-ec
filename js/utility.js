@@ -48,3 +48,9 @@ export const getStorageData = (key) => {
 export const removeStorageData = (key) => {
   localStorage.removeItem(key);
 }
+
+// ISO形式の日時を取得する
+export const getCurrentISODateTime = () => {
+  const date = new Date().toISOString();
+  return date;
+}
