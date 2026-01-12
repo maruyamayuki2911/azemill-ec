@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // モックAPIから注文データを取得
-  const getOrderInfo = async () => {
+  const getOrderData = async () => {
     try {
       const response = await fetch(`${config.apiUrl}/orders`);
 
