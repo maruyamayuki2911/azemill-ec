@@ -1,4 +1,5 @@
 import { config } from './config.js';
+import { getCurrentISODateTime } from './utility.js';
 
 localStorage.clear();
 document.addEventListener('DOMContentLoaded', () => {
@@ -316,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 購入ボタンの処理
   purchaseBtn.addEventListener('click', async () => {
-  
+
     // 注文番号採番
     const orderId = generateOrderId();
 
