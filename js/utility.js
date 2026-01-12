@@ -47,6 +47,14 @@ export const removeStorageData = (key) => {
   localStorage.removeItem(key);
 }
 
+
+// 注文番号を採番する処理
+export const generateOrderId = () => {
+  const randomNumber = Math.floor(Math.random() * 10000);
+  const dateNumber = Date.now().toString().slice(-4);
+  return 'ORD' + randomNumber + dateNumber;
+}
+
 // ISO形式の現在日時を取得する処理
 export const getCurrentISODateTime = () => {
   return new Date().toISOString();

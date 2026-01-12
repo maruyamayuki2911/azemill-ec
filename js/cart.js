@@ -1,7 +1,10 @@
 import { config } from './config.js';
-import { getCurrentISODateTime } from './utility.js';
+import {
+  getCurrentISODateTime,
+  generateOrderId,
+  removeStorageData
+} from './utility.js';
 
-localStorage.clear();
 document.addEventListener('DOMContentLoaded', () => {
   const cartBtn = document.getElementById('cart-btn');
   const plusBtns = document.querySelectorAll('.product__plus-btn');
@@ -13,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // カート内の合計商品数を表示する処理
   const updateCartCount = () => {
-    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0)
+    const totalCount = cart.reduce(
+      (sum, item) => sum + (Number(item.quantity) || 0),
+      0);
     cartBtn.textContent = `Cart(${totalCount})`;
     return totalCount;
   }
@@ -119,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // すでにカートにある場合は数量を更新
-      const existingProduct = cart.find((item) => item.name === product.name);
+      const existingProduct = cart.find((item) => item.name === product.name && item.volume === product.volume);
       if (existingProduct) {
         existingProduct.quantity += quantity;
       } else {
@@ -155,7 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
       let count = parseInt(indicator.textContent, 10);
       const productName = cartElement.querySelector('.product-name').textContent.trim();
       const priceElement = cartElement.querySelector('.product-price');
-      const existingProduct = cart.find((item) => item.name.trim() === productName);  //localStorage内の商品を取得
+      const volume = cartElement.querySelector('.product-volume').textContent.trim();
+      //localStorage内の商品を取得
+      const existingProduct = cart.find((item) =>
+        item.name.trim() === productName && item.volume === volume);
 
       // プラスボタンの処理
       if (target.classList.contains('product__plus-btn')) {
@@ -182,6 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // カート内の数量を表示
           updateCartCount();
+
+          // 数量「1」以上の場合、購入ボタンを有効化
+          if (cart.every(cart => cart.quantity > 0)) {
+            purchaseBtn.classList.remove('purchase-btn--disabled');
+          }
         }
 
       }
@@ -197,22 +210,30 @@ document.addEventListener('DOMContentLoaded', () => {
             existingProduct.quantity--;
           }
 
+          // 数量が「0」の商品は削除
+          if (existingProduct.quantity === 0) {
+            // カートから削除
+            cart = cart.filter(item =>
+              !(item.name === existingProduct.name && item.volume === existingProduct.volume)
+            );
+
+            // DOMから削除
+            cartElement.remove();
+
+            saveCart();
+            cartTotalPrice();
+            updateCartCount();
+          }
 
           // 商品ごとの合計金額を表示
           priceElement.textContent = `${(existingProduct.price * existingProduct.quantity).toLocaleString('ja-jp')}円`;
 
-          // 総額を表示
           cartTotalPrice();
-
-          // localStorageの数量を変更・保存
           saveCart();
-
-
-          // カート内の数量を表示
           updateCartCount();
 
           // 数量「0」の場合、購入ボタンを無効化
-          if (cart.every(cart => cart.quantity <= 0)) {
+          if (cart.every(cart => cart.quantity === 0)) {
             purchaseBtn.classList.add('purchase-btn--disabled');
           }
         }
@@ -233,6 +254,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // 数量「0」の商品をカートから削除する処理
+  const removeZeroQuantityItemsFromCart = (cart) => {
+    return cart = cart.filter((item) => item.quantity > 0)
+  }
 
   // カートモーダルを表示する処理
   const cartModal = document.querySelector('.cart-modal--blur');
@@ -300,15 +325,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
       // 数量「0」の商品をカートから削除
-      if (cart.some((item) => item.quantity === 0)) {
-        cart = cart.filter((item) => item.quantity > 0)
-        localStorage.setItem('cart', JSON.stringify(cart));
-      }
+      cart = removeZeroQuantityItemsFromCart(cart);
+      saveCart();
+
+      // 表示している商品をリセット
+      const cartItem = cartItemList.querySelectorAll('.cart-product');
+      cartItem.forEach(item => {
+        cartItemList.removeChild(item);
+      });
+
     });
   });
 
   // 購入ボタンの処理
   purchaseBtn.addEventListener('click', async () => {
+    // 数量「0」の商品をカートから削除
+    cart = removeZeroQuantityItemsFromCart(cart);
+    saveCart();
 
     // 注文番号採番
     const orderId = generateOrderId();
@@ -316,13 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 画面遷移対策として注文番号を保存
     localStorage.setItem('latestOrderId', orderId);
 
-    const orderData = [
-      {
-        orderId: orderId,
-        date: getCurrentISODateTime(),
-        items: cart
-      }
-    ];
+    const orderData =
+    {
+      orderId: orderId,
+      date: getCurrentISODateTime(),
+      items: cart
+    };
 
     try {
       const response = await fetch(`${config.apiUrl}/orders`, {
@@ -345,8 +377,10 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       alert('しばらくしてから再度お試しください');
     }
-
     // 購入完了画面へ遷移
     window.location.assign('../order-completion/index.html');
   });
+
+  // localStorage初期化
+  removeStorageData('cart')
 });
