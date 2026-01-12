@@ -307,14 +307,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 注文番号を採番する処理
-  const generateOrderId = () => {
-    const randomNumber = Math.floor(Math.random() * 10000);
-    const dateNumber = Date.now().toString().slice(-4);
-    const uniqueNumber = randomNumber + dateNumber;
-    return uniqueNumber;
-  }
-
   // 購入ボタンの処理
   purchaseBtn.addEventListener('click', async () => {
 
