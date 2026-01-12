@@ -33,15 +33,13 @@ export const sendFormData = async (data) => {
     }
 
   } catch (error) {
-    console.log(error);
     alert('しばらくたってからもう一度お試しください。');
   }
 }
 
 // localStorageに保存している特定のデータを取得する処理
 export const getStorageData = (key) => {
-  const data = localStorage.getItem(key);
-  return data
+  return localStorage.getItem(key);
 }
 
 // localStorageに保存している特定のデータを削除する処理
@@ -49,8 +47,21 @@ export const removeStorageData = (key) => {
   localStorage.removeItem(key);
 }
 
-// ISO形式の日時を取得する
+// ISO形式の現在日時を取得する処理
 export const getCurrentISODateTime = () => {
-  const date = new Date().toISOString();
-  return date;
+  return new Date().toISOString();
+}
+
+// ISO形式の日時を、日本向けの表示用フォーマットに変換する処理
+export const formatToJaDateTime = (isoDateString) => {
+  // Dateオブジェクトに変換
+  const date = new Date(isoDateString);
+
+  return date.toLocaleString('ja-JP', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
 }
