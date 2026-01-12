@@ -54,12 +54,12 @@ GitHub Pages 上で動作し、MockAPI と連携して
 
 ## ■ 使用技術
 
-| 分類      | 技術                                   |
-| ------- | ------------------------------------ |
-| フロントエンド | HTML / CSS(Sass) / JavaScript|
-| API     | MockAPI                              |
-| データ保存   | localStorage                         |
-| ホスティング  | GitHub Pages                         |
+| 分類           | 技術                           |
+| ------------   | ----------------------------- |
+| フロントエンド  | HTML / CSS(Sass) / JavaScript |
+| API            | MockAPI                       |
+| データ保存      | localStorage                  |
+| ホスティング    | GitHub Pages                  |
 
 ---
 
@@ -139,7 +139,7 @@ GitHub Pages 上で動作し、MockAPI と連携して
 
 ## ■ セットアップ
 
-```bash
+```
 git clone https://github.com/xxxx/xxxx.git
 cd xxxx
 ```
