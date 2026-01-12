@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const orderData = [
       {
         orderId: orderId,
-        date: new Date().toISOString(),
+        date: getCurrentISODateTime(),
         items: cart
       }
     ];

@@ -6,27 +6,6 @@ import {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 注文番号を採番する処理
-  const generateOrderNumber = () => {
-    const randomNumber = Math.floor(Math.random() * 10000);
-    const dateNumber = Date.now().toString().slice(-4);
-    const uniqueNumber = randomNumber + dateNumber;
-    return uniqueNumber;
-  }
-
-  // 注文日時を取得する処理
-  const getOrderDate = () => {
-    // YYYY/MM/DD/HH/MM形式に変換
-    const orderDate = new Date().toLocaleString('ja-JP', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-    return orderDate;
-  }
-
   // モックAPIから注文データを取得
   const getOrderData = async () => {
     try {
