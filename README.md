@@ -140,8 +140,7 @@ GitHub Pages 上で動作し、MockAPI と連携して
 ## ■ セットアップ
 
 ```
-git clone https://github.com/xxxx/xxxx.git
-cd xxxx
+git clone https://github.com/maruyamayuki2911/azemill-ec.git
 ```
 
 ブラウザで `index.html` を開くだけで動作します。
